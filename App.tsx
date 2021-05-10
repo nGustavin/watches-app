@@ -1,22 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Home } from './src/screens/Home'
+import { useFonts, Inter_500Medium, Inter_700Bold, Inter_300Light } from '@expo-google-fonts/inter';
+import { JosefinSans_700Bold, JosefinSans_500Medium } from '@expo-google-fonts/josefin-sans'
+import AppLoading from 'expo-app-loading'
 
 export default function App() {
+
+  let [fontsLoaded] = useFonts({
+    Inter_500Medium,
+    Inter_700Bold,
+    Inter_300Light,
+    JosefinSans_700Bold,
+    JosefinSans_500Medium
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar/>
+      <Home />
+    </>
   );
 }
 
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
